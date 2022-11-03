@@ -1,0 +1,4 @@
+administer current_time_block configuration:
+  title: 'Administer current_time_block configuration'
+  description: 'Provide permission to the role only who can configure time block.'
+  restrict access: true

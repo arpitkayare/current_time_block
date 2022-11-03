@@ -1,0 +1,7 @@
+current_time_block.settings_form:
+  path: '/admin/config/system/current-time-block'
+  defaults:
+    _title: 'Current time block settings'
+    _form: 'Drupal\current_time_block\Form\SettingsForm'
+  requirements:
+    _permission: 'administer current_time_block configuration'
