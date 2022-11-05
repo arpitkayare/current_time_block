@@ -1,0 +1,14 @@
+/*
+    Created on : 4 Nov, 2022, 9:51:40 PM
+    Author     : Arpit Kayare
+*/
+
+#current-time-main #current-time-clock {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+#current-time-main .date,
+#current-time-main .location {
+  font-size: 20px;
+}

@@ -28,29 +28,30 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $config_setting = $this->config('current_time_block.settings');
     $form['country'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Country'),
-      '#default_value' => $this->config('current_time_block.settings')->get('country'),
+      '#default_value' => $config_setting->get('country'),
     ];
     $form['city'] = [
       '#type' => 'textfield',
       '#title' => $this->t('City'),
-      '#default_value' => $this->config('current_time_block.settings')->get('city'),
+      '#default_value' => $config_setting->get('city'),
     ];
     $form['time_zone'] = [
       '#type' => 'select',
       '#title' => $this->t('Timezone'),
-      '#default_value' => $this->config('current_time_block.settings')->get('time_zone'),
+      '#default_value' => $config_setting->get('time_zone'),
       '#options' => [
-        'america/chicago' => 'America/Chicago',
-        'america/new_york' => 'America/New_York',
-        'asia/tokyo' => 'Asia/Tokyo',
-        'asia/dubai' => 'Asia/Dubai',
-        'asia/kolkata' => 'Asia/Kolkata',
-        'europe/amsterdam' => 'Europe/Amsterdam',
-        'europe/oslo' => 'Europe/Oslo',
-        'europe/london' => 'Europe/London'
+        'America/Chicago' => $this->t('America/Chicago'),
+        'America/New_york' => $this->t('America/New_York'),
+        'Asia/Tokyo' => $this->t('Asia/Tokyo'),
+        'Asia/Dubai' => $this->t('Asia/Dubai'),
+        'Asia/Kolkata' => $this->t('Asia/Kolkata'),
+        'Europe/Amsterdam' => $this->t('Europe/Amsterdam'),
+        'Europe/Oslo' => $this->t('Europe/Oslo'),
+        'Europe/London' => $this->t('Europe/London'),
       ],
     ];
     return parent::buildForm($form, $form_state);

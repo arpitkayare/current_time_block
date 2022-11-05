@@ -2,9 +2,16 @@
 
 /**
  * @file
- * Primary module hooks for Current time block module.
- *
- * @DCG
- * This file is no longer required in Drupal 8.
- * @see https://www.drupal.org/node/2217931
+ * This is the module to create block showing current time.
  */
+
+/**
+ * Implements hook_theme().
+ */
+function current_time_block_theme() {
+  return [
+    'current_time_block' => [
+      'variables' => ['location' => NULL],
+    ],
+  ];
+}

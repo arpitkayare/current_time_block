@@ -1,0 +1,6 @@
+current_time_block.settings_form:
+  title: Current time block
+  description: Configure Current time block.
+  parent: system.admin_config_system
+  route_name: current_time_block.settings_form
+  weight: 10

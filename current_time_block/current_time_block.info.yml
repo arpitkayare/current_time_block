@@ -4,3 +4,4 @@ description: This module provides a functionality to show current time in a bloc
 package: Custom
 core: 8.x
 core_version_requirement: ^8 || ^9
+configure: current_time_block.settings_form

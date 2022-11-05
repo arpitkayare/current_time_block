@@ -1,0 +1,4 @@
+services:
+  current_time_block.get_current_time:
+    class: Drupal\current_time_block\GetCurrentTime
+    arguments: []

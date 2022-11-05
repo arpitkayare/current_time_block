@@ -1,1 +1,11 @@
 # Custom module library for general purposes.
+current_time_block:
+  js:
+    js/current-time-block.js: {}
+  css:
+    component:
+      css/current-time-block.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupalSettings
