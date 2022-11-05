@@ -13,7 +13,7 @@ class GetCurrentTime {
   public function getCurrentTime($time_zone) {
     $current_date_time = [];
     $date_time = new \DateTime("now", new \DateTimeZone($time_zone));
-    $current_date_time['time'] = $date_time->format('h:i a'); 
+    $current_date_time['time'] = $date_time->format('h:i a');
     $current_date_time['date'] = $date_time->format('jS M, Y');
     return $current_date_time;
   }

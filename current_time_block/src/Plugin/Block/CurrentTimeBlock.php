@@ -7,7 +7,6 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\current_time_block\GetCurrentTime;
-use Drupal\Core\Cache\Cache;
 
 /**
  * Provides an Current time block.
@@ -38,12 +37,18 @@ class CurrentTimeBlock extends BlockBase implements ContainerFactoryPluginInterf
   /**
    * Plugin implementation of the ContainerFactoryPluginInterface.
    *
-   * @param array $configuration
-   * @param $plugin_id
-   * @param $plugin_definition
+   *   The container to pull out services used in the plugin.
    *
-   *   Config factory object.
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin ID for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
    * @param Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Config factory object.
+   * @param \Drupal\current_time_block\GetCurrentTime $current_time
+   *   An array containing current time and date.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $config_factory, GetCurrentTime $current_time) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -76,7 +81,7 @@ class CurrentTimeBlock extends BlockBase implements ContainerFactoryPluginInterf
     $build['#attached']['library'] = ['current_time_block/current_time_block'];
     $build['#theme'] = 'current_time_block';
     $build['#location'] = $location;
-    $build['#attached']['drupalSettings'] = ['unixTime' => $this->currentTime->getCurrentTime($this->currentTimeBlock->get('time_zone'))];
+    $build['#cache'] = ['tags' => ['config:current_time_block.settings']];
     return $build;
   }
 
@@ -84,16 +89,7 @@ class CurrentTimeBlock extends BlockBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function getCacheMaxAge() {
-    return 30;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCacheTags() {
-    return Cache::mergeTags(parent::getCacheTags(), [
-      $this->currentTimeBlock->getCacheTags(),
-    ]);
+    return 15;
   }
 
 }

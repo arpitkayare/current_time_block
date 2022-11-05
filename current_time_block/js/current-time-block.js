@@ -8,7 +8,6 @@
 
   Drupal.behaviors.Current_time = { 
     attach: function (context, settings) {
-    
     }
   };
 })(jQuery);

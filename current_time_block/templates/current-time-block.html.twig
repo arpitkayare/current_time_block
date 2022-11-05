@@ -1,7 +1,6 @@
 {# Twig template for Current time block. #}
 
 <div id="current-time-main">
-  {#<div id="current-time-clock">{{ "00:00 am" }}</div>#}
   <div id="current-time-clock">{{ location['current_time_date']['time'] }}</div>
   <div class="date">{{ location['current_time_date']['date'] }}</div>
   <div class="location">{{'Time in' }} {{ location['city'] }}, {{ location['country'] }}</div>
