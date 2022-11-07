@@ -33,16 +33,19 @@ class SettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Country'),
       '#default_value' => $config_setting->get('country'),
+      '#required' => TRUE,
     ];
     $form['city'] = [
       '#type' => 'textfield',
       '#title' => $this->t('City'),
       '#default_value' => $config_setting->get('city'),
+      '#required' => TRUE,
     ];
     $form['time_zone'] = [
       '#type' => 'select',
       '#title' => $this->t('Timezone'),
       '#default_value' => $config_setting->get('time_zone'),
+      '#required' => TRUE,
       '#options' => [
         'America/Chicago' => $this->t('America/Chicago'),
         'America/New_york' => $this->t('America/New_York'),
@@ -70,11 +73,7 @@ class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('current_time_block.settings')
       ->set('country', $form_state->getValue('country'))
-      ->save();
-    $this->config('current_time_block.settings')
       ->set('city', $form_state->getValue('city'))
-      ->save();
-    $this->config('current_time_block.settings')
       ->set('time_zone', $form_state->getValue('time_zone'))
       ->save();
     parent::submitForm($form, $form_state);
